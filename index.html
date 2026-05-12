@@ -258,15 +258,17 @@
             <p>Send us a message and we will reply quickly.</p>
 
             <!-- CONTACT FORM -->
-            <form class="contact-form" >
+            <form action="mailto:ydipendra58@gmail.com?subject= New Customer inquiry" class="contact-form" method="POST" enctype="text/plain" >
 
                 <input type="text" name="name" placeholder="Your Name" required>
 
                 <input type="tel" name="number" placeholder="Your Phone Number" required>
 
-                <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                <input type="text" name="product" placeholder="Item Name">
 
-                <button type="button" onclick="">
+                <textarea name="message" rows="5" placeholder="Your Message" ></textarea>
+
+                <button type="submit">
                     Send Message
                 </button>
 
