@@ -1,0 +1,675 @@
+body{
+  margin: 10px;
+  overflow-x: hidden;
+}
+
+
+
+
+/* --- GLOBAL STYLES --- */
+:root {
+    --primary-color: #1a3a5f; /* Deep Construction Blue */
+    --accent-color: #ffd700;  /* Gold/Construction Yellow */
+    --text-white: #ffffff;
+    --glass-bg: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header {
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* --- Desktop Layout --- */
+
+.nav-logo-contacts {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+}
+
+.logo img {
+    height: 60px; /* Adjust based on your logo */
+}
+
+.contacts-row {
+    display: flex;
+    gap: 30px;
+}
+
+.contacts-row > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.icon {
+    font-size: 1.5rem;
+    color: rgb(97, 115, 152);
+}
+
+.icon-name {
+    font-weight: bold;
+    font-size: 0.85rem;
+    color: #333;
+}
+
+.child-text {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* Nav Links Desktop */
+.nav-links-list {
+    background: #2c3e50;
+}
+
+.nav-links-list ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+}
+
+.nav-links-list ul li a {
+    display: block;
+    padding: 15px 25px;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links-list ul li a:hover {
+    background: #34495e;
+}
+
+.hamburger {
+    display: none; /* Hidden on desktop */
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #2c3e50;
+}
+
+/* --- Mobile Responsive (Max 768px) --- */
+
+@media (max-width: 768px) {
+    /* 1. Hide the contact row */
+    .contacts-row {
+        display: none;
+    }
+
+    .nav-logo-contacts {
+        padding: 10px 20px;
+    }
+
+    /* 2. Show Hamburger Icon */
+    .hamburger {
+        display: block;
+    }
+
+    /* 3. Transform Nav Links into a mobile menu */
+    .nav-links-list {
+        display: none; /* Hide by default */
+        width: 100%;
+        background: #2c3e50;
+    }
+
+    .nav-links-list.active {
+        display: block; /* Show when 'active' class is added via JS */
+    }
+
+    .nav-links-list ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .nav-links-list ul li {
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+}
+/* --- DESKTOP HERO SECTION --- */
+.hero-banner {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Full screen height */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Content to the left for desktop */
+    padding: 0 10%;
+    overflow: hidden;
+}
+
+/* Background Image Handling */
+.banner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Dark gradient overlay so text is readable */
+    filter: brightness(0.7); 
+}
+
+/* Modern Glassmorphism Box (Desktop) */
+.banner-box {
+    max-width: 650px;
+    padding: 50px;
+    background: rgba(0, 0, 0, 0.4); /* Darker glass for desktop */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-white);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    animation: fadeInUp 1s ease-out; /* Entry animation */
+}
+
+.banner-box h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    background: linear-gradient(to right, #ffffff, #cccccc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.banner-box p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.features {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 700;
+    color: var(--accent-color) !important;
+    margin-bottom: 30px !important;
+}
+
+/* Desktop Button */
+button {
+    cursor: pointer;
+    background: var(--text-white);
+    color: #111;
+    border: none;
+    padding: 15px 35px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.3s ease;
+}
+
+button i {
+    transition: transform 0.3s ease;
+}
+
+button:hover {
+    background: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+button:hover i {
+    transform: translateX(5px);
+}
+
+/* Entry Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- MOBILE RESPONSIVE (Adjustments) --- */
+@media screen and (max-width: 768px) {
+    .hero-banner {
+        justify-content: center; /* Center content on mobile */
+        padding: 0 20px;
+    }
+
+    .banner-box {
+        text-align: center;
+        padding: 30px 20px;
+    }
+
+    .banner-box h1 {
+        font-size: 2rem;
+    }
+
+    .banner-box p {
+        font-size: 0.95rem;
+    }
+    
+    button {
+        margin: 0 auto;
+    }
+}
+/* --- Badges Section Styles --- */
+.badge-desc {
+    padding: 80px 10%;
+    background-color: #f8f9fa; /* Light neutral background */
+    text-align: center;
+}
+
+.badge-desc h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 50px;
+    position: relative;
+    font-weight: 800;
+}
+
+/* Subtle underline for the title */
+.badge-desc h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #491258; /* Matching your icon color */
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+/* Grid Container */
+.badge-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 columns for desktop */
+    gap: 25px;
+    align-items: stretch;
+}
+
+/* Individual Badge Cards */
+.badge-container > div {
+    background: #ffffff;
+    padding: 40px 20px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hover Effect */
+.badge-container > div:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(73, 18, 88, 0.15);
+    border-color: rgba(73, 18, 88, 0.2);
+}
+
+/* Icon Styling */
+.badge-container i {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+/* Label Styling (Legacy, ITEMS, etc.) */
+.badge-container h5 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #777;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+/* Numbers Styling */
+.badge-container p {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #491258; /* Your theme color */
+    margin: 0;
+}
+
+.badge-container p span {
+    font-size: 2.2rem;
+}
+
+/* --- MEDIA QUERIES --- */
+
+/* Tablets (3 columns) */
+@media screen and (max-width: 1024px) {
+    .badge-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Mobile Phones (2 columns) */
+@media screen and (max-width: 768px) {
+    .badge-desc {
+        padding: 50px 5%;
+    }
+    
+    .badge-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .badge-desc h2 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Small Mobile Phones (1 column) */
+@media screen and (max-width: 480px) {
+    .badge-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .badge-container > div {
+        padding: 30px;
+    }
+}
+
+#our-products {
+    padding: 60px 20px;
+    background-color: #f8f9fa; /* Light grey background for contrast */
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    text-align: center;
+}
+
+#our-products h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #2d3436;
+    position: relative;
+    display: inline-block;
+}
+
+/* Subtle underline for the heading */
+#our-products h2::after {
+    content: '';
+    width: 50%;
+    height: 3px;
+    background: #007bff;
+    position: absolute;
+    bottom: -10px;
+    left: 25%;
+    border-radius: 2px;
+}
+
+/* Grid Layout */
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Individual Product Card */
+.products > div {
+    background: #ffffff;
+    border-radius: 12px;
+    width: 280px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #eee;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.products > div:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Link and Layout inside Card */
+.products a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Image Styling */
+.products img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* Ensures images look good even if sizes vary */
+    background-color: #e9ecef; /* Placeholder color while images load */
+    transition: transform 0.5s ease;
+}
+
+.products > div:hover img {
+    transform: scale(1.05);
+}
+
+/* Product Title Styling */
+.products h4 {
+    margin: 0;
+    padding: 20px;
+    font-size: 1.1rem;
+    color: rgb(255, 255, 255);
+    font-weight: 800;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #851717;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .products > div {
+        width: calc(50% - 20px); /* 2 items per row on tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    .products > div {
+        width: 100%; /* Full width on mobile */
+    }
+}
+
+
+/* Mobile Responsive Styles */
+@media screen and (max-width: 768px) {
+    .hero-banner {
+        position: relative;
+        width: 110%;
+        min-height: 100vh; /* Takes full mobile screen height */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Background Image Styling */
+    .banner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
+
+    .banner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ensures image covers screen without stretching */
+        filter: brightness(0.6); /* Darkens image slightly for better text contrast */
+    }
+
+    /* Modern Glassmorphism Text Box */
+    
+
+    .banner-box {
+    /* 1. Limit Width: Prevents the card from stretching too wide */
+    width: 90%; 
+    max-width: 380px;   /* Limits size on large screens */
+    
+    /* 2. Tighten Padding: Essential for reducing height */
+    padding: 25px 30px; 
+    
+    /* 3. Glassmorphism Styles (Kept from your original) */
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+
+
+
+
+
+
+    .banner-box h1 {
+        font-size: 1.8rem;
+        margin-bottom: 12px;
+        line-height: 1.2;
+        font-weight: 700;
+    }
+
+    .banner-box p {
+        font-size: 0.90rem;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        opacity: 0.9;
+    }
+
+    .features {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 25px !important;
+        color: #ffd700; /* Gold color to highlight hardware/paints */
+    }
+
+    /* Modern Button */
+    button {
+        background-color: #ffffff;
+        color: #333;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 50px;
+        font-size: 1rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        transition: transform 0.3s ease;
+        
+        box-shadow: 10px 4px 15px black  ;
+    }
+
+    button:active {
+        transform: scale(0.95); /* Click animation */
+    }
+}
+
+
+.contact-section {
+    padding: 60px 20px;
+    background: #f5f7ff;
+    text-align: center;
+}
+
+.contact-container {
+    max-width: 600px;
+    margin: auto;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.contact-form button {
+    padding: 12px;
+    border: none;
+    background: rgb(97, 115, 152);
+    color: white;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.contact-form button:hover {
+    background: rgb(70, 85, 120);
+}
+
+/* WhatsApp Button */
+.whatsapp-btn {
+    margin-top: 20px;
+}
+
+.whatsapp-btn a {
+    display: inline-block;
+    padding: 12px 20px;
+    background: #25D366;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.whatsapp-btn a:hover {
+    background: #1ebc59;
+}
+
+.nepal-skyline{
+    width: 100%;
+}
+
+.nepal-skyline img{
+    width: 100%;
+    height: auto;
+    display: block;
+    
+}
+
