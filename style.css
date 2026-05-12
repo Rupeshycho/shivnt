@@ -188,9 +188,8 @@ header {
     font-weight: 800;
     line-height: 1.1;
     margin-bottom: 20px;
-    background: linear-gradient(to right, #ffffff, #cccccc);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: rgb(199, 235, 238);
+    
 }
 
 .banner-box p {
@@ -198,6 +197,7 @@ header {
     line-height: 1.8;
     margin-bottom: 30px;
     opacity: 0.9;
+    color: #15034b;
 }
 
 .features {
@@ -254,7 +254,9 @@ button:hover i {
 /* --- MOBILE RESPONSIVE (Adjustments) --- */
 @media screen and (max-width: 768px) {
     .hero-banner {
-        justify-content: center; /* Center content on mobile */
+        justify-content: center;
+         /* Center content on mobile */
+        width: 100%;
         padding: 0 20px;
     }
 
@@ -501,7 +503,7 @@ button:hover i {
 @media screen and (max-width: 768px) {
     .hero-banner {
         position: relative;
-        width: 110%;
+        width: 100%;
         min-height: 100vh; /* Takes full mobile screen height */
         display: flex;
         align-items: center;
@@ -633,6 +635,9 @@ button:hover i {
     font-size: 16px;
     border-radius: 8px;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .contact-form button:hover {
